@@ -26,12 +26,12 @@ const HomeTabs = () => {
                 tabBarShowLabel: false,
                 tabBarActiveTintColor: "#B8A739",
                 tabBarInactiveTintColor: "#fff",
-                tabBarActiveBackgroundColor:'#199458',
-                tabBarInactiveBackgroundColor:'#066337',
-                tabBarStyle:{
-                    borderTopWidth:1,
-                    borderTopColor:'#066337',
-                }   
+                tabBarActiveBackgroundColor: '#199458',
+                tabBarInactiveBackgroundColor: '#066337',
+                tabBarStyle: {
+                    borderTopWidth: 1,
+                    borderTopColor: '#066337',
+                }
             }}
         >
             <Tab.Screen
@@ -49,7 +49,7 @@ const HomeTabs = () => {
                     headerTitleAlign: "center",
                     headerTitle: "Home",
                     header: () => (
-                        <View style={{ paddingLeft:75 ,backgroundColor: '#066337', flexDirection: 'row', justifyContent: 'center' }}>
+                        <View style={{ paddingLeft: 75, backgroundColor: '#066337', flexDirection: 'row', justifyContent: 'center' }}>
                             <Breaking />
                             <Bad />
                         </View>
@@ -73,13 +73,13 @@ const HomeTabs = () => {
                         if (focused) {
                             return (
                                 <View style={{ flexDirection: 'row' }}>
-                                    <TabBarBreakingBad color={color}/>
+                                    <TabBarBreakingBad color={color} />
                                 </View>
                             )
                         }
                         return (
-                            <View style={{ flexDirection: 'row', justifyContent:'center' }}>
-                                <TabBarBreakingBad color={color}/>
+                            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                                <TabBarBreakingBad color={color} />
                             </View>
                         )
                     }
@@ -110,10 +110,70 @@ const Router = () => {
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
 
-                <Stack.Screen name="Characters" component={Characters} options={{ headerShown: true }} />
-                <Stack.Screen name="Episodes" component={Episodes} options={{ headerShown: true }} />
-                <Stack.Screen name="Quotes" component={Quotes} options={{ headerShown: true }} />
-                <Stack.Screen name="Deaths" component={Deaths} options={{ headerShown: true }} />
+                <Stack.Screen
+                    name="Characters"
+                    component={Characters}
+                    options={{
+                        headerStyle: {
+                            backgroundColor: '#066337',
+                        },
+                        headerTitleStyle: {
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            color: "#fff",
+                        },
+                        headerTitleAlign: "center",
+                        headerTintColor: '#fff'
+                    }}
+                />
+                <Stack.Screen
+                    name="Episodes"
+                    component={Episodes}
+                    options={{
+                        headerStyle: {
+                            backgroundColor: '#066337',
+                        },
+                        headerTitleStyle: {
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            color: "#fff",
+                        },
+                        headerTitleAlign: "center",
+                        headerTintColor: '#fff'
+                    }}
+                />
+                <Stack.Screen
+                    name="Quotes"
+                    component={Quotes}
+                    options={{
+                        headerStyle: {
+                            backgroundColor: '#066337',
+                        },
+                        headerTitleStyle: {
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            color: "#fff",
+                        },
+                        headerTitleAlign: "center",
+                        headerTintColor: '#fff'
+                    }}
+                />
+                <Stack.Screen
+                    name="Deaths"
+                    component={Deaths}
+                    options={{
+                        headerStyle: {
+                            backgroundColor: '#066337',
+                        },
+                        headerTitleStyle: {
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            color: "#fff",
+                        },
+                        headerTitleAlign: "center",
+                        headerTintColor: '#fff'
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer >
     )
