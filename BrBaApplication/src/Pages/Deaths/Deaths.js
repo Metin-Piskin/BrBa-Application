@@ -27,12 +27,11 @@ const DeathsPage = () => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#2AB670' }}>
-            <FlatList
-                data={film}
-                renderItem={RenderDeaths}
-            />
-        </View>
+        <FlatList
+            data={film}
+            renderItem={RenderDeaths}
+            horizontal={true}
+        />
     )
 }
 export default DeathsPage;

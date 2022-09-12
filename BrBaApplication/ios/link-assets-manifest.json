@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/QwitcherGrypen-Bold.ttf",
+      "sha1": "5318ec9abdef40b79fa7300c518a65d5e2ab98c9"
+    },
+    {
+      "path": "assets/fonts/QwitcherGrypen-Regular.ttf",
+      "sha1": "6ddf38271262d5c9efc7d209e78663df6c77ec1b"
+    },
+    {
+      "path": "assets/fonts/StintUltraCondensed-Regular.ttf",
+      "sha1": "d973393719e515e9cdc3090685d6173df1233700"
+    }
+  ]
+}

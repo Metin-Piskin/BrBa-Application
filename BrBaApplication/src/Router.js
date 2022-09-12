@@ -69,6 +69,7 @@ const HomeTabs = () => {
                     headerStyle: {
                         backgroundColor: '#066337'
                     },
+                    headerShown: false,
                     tabBarIcon: ({ color, focused }) => {
                         if (focused) {
                             return (

@@ -27,12 +27,11 @@ const EpisodesPage = () => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#2AB670' }}>
-            <FlatList
-                data={film}
-                renderItem={RenderEpisıde}
-            />
-        </View>
+        <FlatList
+            data={film}
+            renderItem={RenderEpisıde}
+            horizontal={true}
+        />
     )
 }
 export default EpisodesPage;

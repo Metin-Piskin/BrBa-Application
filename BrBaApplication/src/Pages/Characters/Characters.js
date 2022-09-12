@@ -27,12 +27,11 @@ const CharactersPage = () => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#2AB670' }}>
-            <FlatList
-                data={film}
-                renderItem={RenderCharacter}
-            />
-        </View>
+        <FlatList
+            data={film}
+            renderItem={RenderCharacter}
+            horizontal={true}
+        />
     )
 }
 export default CharactersPage;

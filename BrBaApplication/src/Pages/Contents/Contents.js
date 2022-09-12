@@ -1,38 +1,25 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 import styles from './Contents.style';
 import ContentButton from '../../Component/ContentPageComponent/ContentButton';
+import Characters from '../Characters';
+import Episodes from '../Episodes';
+import Quotes from '../Quotes';
+import Deaths from '../Deaths';
 
-const FilmsPage = (props) => {
-    const CharactersPress = () => {
-        return (
-            props.navigation.navigate('Characters')
-        )
-    }
-    const EpisodesPress = () => {
-        return (
-            props.navigation.navigate('Episodes')
-        )
-    }
-    const QuotesPress = () => {
-        return (
-            props.navigation.navigate('Quotes')
-        )
-    }
-    const DeathsPress = () => {
-        return (
-            props.navigation.navigate('Deaths')
-        )
-    }
-
+const FilmsPage = () => {
     return (
-        <View style={{ flex: 1, backgroundColor: '#2AB670' }}>
-            <ContentButton title='Characters' onPress={CharactersPress} />
-            <ContentButton title='Episodes' onPress={EpisodesPress} />
-            <ContentButton title='Quotes' onPress={QuotesPress} />
-            <ContentButton title='Deaths' onPress={DeathsPress} />
-        </View>
+        <ScrollView style={{ flex: 1, backgroundColor: '#2AB670' }}>
+            <Text>Characters</Text>
+            <Characters />
+            <Text>Episodes</Text>
+            <Episodes />
+            <Text>Quotes</Text>
+            <Quotes />
+            <Text>Deaths</Text>
+            <Deaths />
+        </ScrollView>
     )
 }
 export default FilmsPage;

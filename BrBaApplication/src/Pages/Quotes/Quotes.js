@@ -27,12 +27,11 @@ const QuotesPage = () => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#2AB670' }}>
-            <FlatList
-                data={film}
-                renderItem={RenderQuotes}
-            />
-        </View>
+        <FlatList
+            data={film}
+            renderItem={RenderQuotes}
+            horizontal={true}
+        />
     )
 }
 export default QuotesPage;
