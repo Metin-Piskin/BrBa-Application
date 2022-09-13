@@ -15,6 +15,12 @@ export default StyleSheet.create({
         borderRadius: 10,
         padding:10
     },
+    headercontainer:{
+        zIndex:1,
+        position:"absolute",
+        right:10,
+        bottom:10
+    },
     et: {
         flexDirection: 'row'
     },

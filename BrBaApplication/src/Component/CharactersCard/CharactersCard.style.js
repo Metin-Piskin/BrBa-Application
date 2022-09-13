@@ -5,6 +5,12 @@ export default StyleSheet.create({
         marginVertical: 10,
         marginHorizontal: 20,
     },
+    heartcontainer:{
+        zIndex:1,
+        position:"absolute",
+        right:10,
+        top:10
+    },
     inner_container: {
         flexDirection: 'row',
         justifyContent: "space-around",

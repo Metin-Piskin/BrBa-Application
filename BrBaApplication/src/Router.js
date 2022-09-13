@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import İcon from 'react-native-vector-icons/FontAwesome5';
+import auth from "@react-native-firebase/auth";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -10,14 +12,10 @@ const Tab = createBottomTabNavigator();
 import Home from "./Pages/Home";
 import Contents from './Pages/Contents';
 import Profile from './Pages/Profile';
-
-import Characters from './Pages/Characters';
-import Episodes from './Pages/Episodes';
-import Quotes from './Pages/Quotes';
-import Deaths from './Pages/Deaths';
+import Login from './Pages/Auth/Login';
+import Sign from './Pages/Auth/Sign';
 
 import { Breaking, Bad, TabBarBreakingBad } from './Component/Svc/İcons';
-import { View } from "react-native";
 
 const HomeTabs = () => {
     return (
@@ -105,76 +103,37 @@ const HomeTabs = () => {
     )
 }
 
+const AuthStack = () => {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Sign" component={Sign} />
+        </Stack.Navigator>
+    )
+}
+
 const Router = () => {
+    const [userSession, setUserSession] = useState();
+
+    useEffect(() => {
+        auth().onAuthStateChanged(user => {
+            setUserSession(!!user);
+        })
+    }, []);
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
-
-                <Stack.Screen
-                    name="Characters"
-                    component={Characters}
-                    options={{
-                        headerStyle: {
-                            backgroundColor: '#066337',
-                        },
-                        headerTitleStyle: {
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            color: "#fff",
-                        },
-                        headerTitleAlign: "center",
-                        headerTintColor: '#fff'
-                    }}
-                />
-                <Stack.Screen
-                    name="Episodes"
-                    component={Episodes}
-                    options={{
-                        headerStyle: {
-                            backgroundColor: '#066337',
-                        },
-                        headerTitleStyle: {
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            color: "#fff",
-                        },
-                        headerTitleAlign: "center",
-                        headerTintColor: '#fff'
-                    }}
-                />
-                <Stack.Screen
-                    name="Quotes"
-                    component={Quotes}
-                    options={{
-                        headerStyle: {
-                            backgroundColor: '#066337',
-                        },
-                        headerTitleStyle: {
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            color: "#fff",
-                        },
-                        headerTitleAlign: "center",
-                        headerTintColor: '#fff'
-                    }}
-                />
-                <Stack.Screen
-                    name="Deaths"
-                    component={Deaths}
-                    options={{
-                        headerStyle: {
-                            backgroundColor: '#066337',
-                        },
-                        headerTitleStyle: {
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            color: "#fff",
-                        },
-                        headerTitleAlign: "center",
-                        headerTintColor: '#fff'
-                    }}
-                />
+                {
+                    !userSession ? (
+                        <Stack.Screen
+                            name="AuthStack"
+                            component={AuthStack}
+                            options={{ headerShown: false }}
+                        />
+                    ) : (
+                        <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
+                    )
+                }
             </Stack.Navigator>
         </NavigationContainer >
     )

@@ -2,10 +2,21 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#000',
+        backgroundColor: '#2AB670',
         marginVertical: 15,
-        marginHorizontal:10,
-        paddingHorizontal:10,
+        marginHorizontal: 10,
+        paddingHorizontal: 10,
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
+        borderTopWidth: 0.5,
+        borderBottomWidth: 0.5,
+        borderRadius: 15
+    },
+    heartcontainer: {
+        zIndex: 1,
+        position: "absolute",
+        bottom: 5,
+        left: 10
     },
     quotecontainer: {
         marginHorizontal: 10,
@@ -16,11 +27,12 @@ export default StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 18,
-        fontFamily:'QwitcherGrypen-Regular'
+        fontFamily: 'QwitcherGrypen-Regular'
     },
     authorcontainer: {
         alignItems: "flex-end",
-        marginHorizontal: 15
+        marginHorizontal: 15,
+        paddingHorizontal: 10,
     },
     author: {
         color: '#fff',

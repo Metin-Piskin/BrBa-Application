@@ -1,12 +1,31 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { Heart, HeartPress } from '../Svc/İcons';
 
 import styles from './DeathsCard.style';
 
 const DeathsCard = ({ input }) => {
+    const [fav, setFav] = useState(true);
+    const Favpres = () => {
+        fav === true ? (
+            setFav(false)
+        ) : (
+            setFav(true)
+        )
+    }
     return (
         <View style={styles.container}>
             <View style={styles.innercontainer}>
+                <TouchableOpacity style={styles.headercontainer} onPress={Favpres}>
+                    {
+                        fav ? (
+                            <Heart size={25} fill='#fff' />
+                        ) : (
+                            <HeartPress size={25} fill='red' />
+                        )
+                    }
+                </TouchableOpacity>
+
                 <View style={styles.et}>
                     <Text style={styles.bas}>Death:  </Text>
                     <Text>{input.death}</Text>
