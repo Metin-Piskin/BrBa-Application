@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Heart, HeartPress } from '../Svc/İcons';
+import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './EpisodesCard.style';
 
@@ -14,7 +15,10 @@ const EpisodesCard = ({ input }) => {
         )
     }
     return (
-        <View style={styles.container}>
+        <LinearGradient
+            colors={['#000000c0', '#066337', '#000000c0']}
+            style={styles.container}
+        >
             <View style={styles.allinnercontainer}>
                 <TouchableOpacity style={styles.heartcontainer} onPress={Favpres}>
                     {
@@ -28,44 +32,44 @@ const EpisodesCard = ({ input }) => {
                 <View style={styles.solcontainer}>
                     <View style={styles.innercontainer}>
                         <Text style={styles.et}>Season:  </Text>
-                        <Text>{input.season}</Text>
+                        <Text style={{ fontWeight: 'bold' }}>{input.season}</Text>
                     </View>
 
                     <View style={styles.innercontainer}>
                         <Text style={styles.et}>Title:  </Text>
-                        <Text>{input.title}</Text>
+                        <Text style={{ fontWeight: 'bold' }}>{input.title}</Text>
                     </View>
 
                     <View style={styles.innercontainer}>
                         <Text style={styles.et} >Air Date:  </Text>
-                        <Text>{input.air_date}</Text>
+                        <Text style={{ fontWeight: 'bold' }}>{input.air_date}</Text>
                     </View>
 
                     <View style={styles.innercontainer}>
                         <Text style={styles.et} >Episode:  </Text>
-                        <Text>{input.episode}</Text>
+                        <Text style={{ fontWeight: 'bold' }}>{input.episode}</Text>
                     </View>
 
                     <View style={styles.innercontainer}>
                         <Text style={styles.et}>Series:  </Text>
-                        <Text>{input.series}</Text>
+                        <Text style={{ fontWeight: 'bold' }}>{input.series}</Text>
                     </View>
                 </View>
 
                 <View style={styles.sağcontainer}>
                     <Text style={styles.et}>Characters: </Text>
-                    <Text>* {input.characters[0]}</Text>
-                    <Text>* {input.characters[1]}</Text>
-                    <Text>* {input.characters[2]}</Text>
-                    <Text>* {input.characters[3]}</Text>
-                    <Text>* {input.characters[4]}</Text>
-                    <Text>* {input.characters[5]}</Text>
-                    <Text>* {input.characters[6]}</Text>
-                    <Text>* {input.characters[7]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[0]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[1]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[2]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[3]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[4]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[5]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[6]}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>* {input.characters[7]}</Text>
                 </View>
 
             </View>
-        </View>
+        </LinearGradient>
     );
 }
 export default EpisodesCard;

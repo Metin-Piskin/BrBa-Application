@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Heart, HeartPress } from '../Svc/İcons';
+import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './QuotesCard.style';
 
@@ -14,7 +15,10 @@ const QuotesCard = ({ input }) => {
         )
     }
     return (
-        <View style={styles.container}>
+        <LinearGradient
+            colors={['#000000c0', '#066337', '#000000c0']}
+            style={styles.container}
+        >
             <TouchableOpacity style={styles.heartcontainer} onPress={Favpres}>
                 {
                     fav ? (
@@ -33,7 +37,7 @@ const QuotesCard = ({ input }) => {
             <View style={styles.seriescontainer}>
                 <Text style={styles.series}>{input.series}</Text>
             </View>
-        </View>
+        </LinearGradient>
     )
 }
 export default QuotesCard;

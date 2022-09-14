@@ -22,7 +22,7 @@ const HomeTabs = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: "#B8A739",
+                tabBarActiveTintColor: "#000000c0",
                 tabBarInactiveTintColor: "#fff",
                 tabBarActiveBackgroundColor: '#199458',
                 tabBarInactiveBackgroundColor: '#066337',
@@ -91,6 +91,13 @@ const HomeTabs = () => {
                     headerStyle: {
                         backgroundColor: '#066337'
                     },
+                    headerTitleStyle: {
+                        fontSize: 20,
+                        fontWeight: "bold",
+                        color: "#fff",
+                    },
+                    headerTitleAlign: "center",
+                    headerTitle: 'Profile',
                     tabBarIcon: ({ color, focused }) => {
                         if (focused) {
                             return <İcon name="user-circle" color={color} size={25} />

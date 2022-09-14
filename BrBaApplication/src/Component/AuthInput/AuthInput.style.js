@@ -6,6 +6,7 @@ export default StyleSheet.create({
         marginHorizontal:10,
         marginVertical:10,
         borderRadius:10,
+        borderWidth:1,
     },
     input:{},
 })

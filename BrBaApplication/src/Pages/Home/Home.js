@@ -6,7 +6,7 @@ import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import datam from '../../Data/İmage.js';
 
 const HomePage = () => (
-    <View style={{ backgroundColor: '#2AB670', flex: 1 }}>
+    <View style={{ backgroundColor: '#18191A', flex: 1 }}>
         <View style={styles.container}>
             <SwiperFlatList
                 autoplay
@@ -31,7 +31,7 @@ const HomePage = () => (
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: { backgroundColor: 'white', height: 250 },
-    child: { width, justifyContent: 'center', backgroundColor: '#2AB670' },
+    child: { width, justifyContent: 'center', backgroundColor: '#18191A' },
     text: { fontSize: width * 0.1, textAlign: 'center' },
 });
 

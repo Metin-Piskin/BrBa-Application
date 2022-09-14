@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, ImageBackground, TouchableOpacity } from "react-native";
 import { Heart, HeartPress } from '../Svc/İcons';
+import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './CharactersCard.style';
 
@@ -24,7 +25,10 @@ const CharactersCard = ({ input }) => {
                     )
                 }
             </TouchableOpacity>
-            <View style={styles.inner_container}>
+            <LinearGradient
+                colors={['#000000c0', '#000000c0']}
+                style={styles.inner_container}
+            >
                 <View>
                     <Image source={{ uri: input.img }} style={styles.image} />
                 </View>
@@ -57,7 +61,7 @@ const CharactersCard = ({ input }) => {
 
                     <Text style={styles.text}>{input.category}</Text>
                 </View>
-            </View>
+            </LinearGradient>
         </ImageBackground>
     )
 }

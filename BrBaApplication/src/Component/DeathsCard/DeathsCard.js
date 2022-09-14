@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Heart, HeartPress } from '../Svc/İcons';
+import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './DeathsCard.style';
 
@@ -14,7 +15,10 @@ const DeathsCard = ({ input }) => {
         )
     }
     return (
-        <View style={styles.container}>
+        <LinearGradient
+            colors={['#000000c0', '#066337', '#000000c0']}
+            style={styles.container}
+        >
             <View style={styles.innercontainer}>
                 <TouchableOpacity style={styles.headercontainer} onPress={Favpres}>
                     {
@@ -28,40 +32,40 @@ const DeathsCard = ({ input }) => {
 
                 <View style={styles.et}>
                     <Text style={styles.bas}>Death:  </Text>
-                    <Text>{input.death}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{input.death}</Text>
                 </View>
 
                 <View style={styles.et}>
                     <Text style={styles.bas}>Cause:  </Text>
-                    <Text>{input.cause}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{input.cause}</Text>
                 </View>
 
                 <View style={styles.et}>
                     <Text style={styles.bas}>Responsible:  </Text>
-                    <Text>{input.responsible}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{input.responsible}</Text>
                 </View>
 
                 <View style={styles.et}>
                     <Text style={styles.bas}>Last Words:  </Text>
-                    <Text>{input.last_words}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{input.last_words}</Text>
                 </View>
 
                 <View style={styles.et}>
                     <Text style={styles.bas}>Season:  </Text>
-                    <Text>{input.season}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{input.season}</Text>
                 </View>
 
                 <View style={styles.et}>
                     <Text style={styles.bas}>Episode:  </Text>
-                    <Text>{input.episode}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{input.episode}</Text>
                 </View>
 
                 <View style={styles.et}>
                     <Text style={styles.bas}>Number of Deaths:  </Text>
-                    <Text>{input.number_of_deaths}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{input.number_of_deaths}</Text>
                 </View>
             </View>
-        </View>
+        </LinearGradient>
     );
 }
 export default DeathsCard;

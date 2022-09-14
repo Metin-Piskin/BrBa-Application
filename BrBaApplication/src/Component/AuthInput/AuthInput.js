@@ -3,9 +3,9 @@ import { View, TextInput, Text } from "react-native";
 
 import styles from './AuthInput.style';
 
-const AuthInput = ({ placeholder, onChangeText, value, isSecure, onBlur, keyboardType, textContentType }) => {
+const AuthInput = ({ stu, placeholder, onChangeText, value, isSecure, onBlur, keyboardType, textContentType }) => {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, stu]}>
             <TextInput
                 style={styles.input}
                 placeholderTextColor='#000'
@@ -18,7 +18,7 @@ const AuthInput = ({ placeholder, onChangeText, value, isSecure, onBlur, keyboar
                 keyboardType={keyboardType}
                 textContentType={textContentType}
             />
-        </View>
+        </View >
     )
 }
 export default AuthInput;

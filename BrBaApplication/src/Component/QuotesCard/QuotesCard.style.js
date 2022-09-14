@@ -2,15 +2,14 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#2AB670',
+        backgroundColor: '#000000c0',
         marginVertical: 15,
         marginHorizontal: 10,
         paddingHorizontal: 10,
         borderLeftWidth: 2,
         borderRightWidth: 2,
-        borderTopWidth: 0.5,
-        borderBottomWidth: 0.5,
-        borderRadius: 15
+        borderRadius: 15,
+        borderColor:'#fff'
     },
     heartcontainer: {
         zIndex: 1,
