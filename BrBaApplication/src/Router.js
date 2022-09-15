@@ -14,15 +14,16 @@ import Contents from './Pages/Contents';
 import Profile from './Pages/Profile';
 import Login from './Pages/Auth/Login';
 import Sign from './Pages/Auth/Sign';
+import İmages from './Pages/İmages';
 
-import { Breaking, Bad, TabBarBreakingBad } from './Component/Svc/İcons';
+import { Breaking, Bad, TabBarBreakingBad, TabBarBreakingBadPress, Heisenberg, HeisenbergPress } from './Component/Svc/İcons';
 
 const HomeTabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: "#000000c0",
+                tabBarActiveTintColor: "#000000",
                 tabBarInactiveTintColor: "#fff",
                 tabBarActiveBackgroundColor: '#199458',
                 tabBarInactiveBackgroundColor: '#066337',
@@ -72,13 +73,13 @@ const HomeTabs = () => {
                         if (focused) {
                             return (
                                 <View style={{ flexDirection: 'row' }}>
-                                    <TabBarBreakingBad color={color} />
+                                    <TabBarBreakingBad />
                                 </View>
                             )
                         }
                         return (
                             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                                <TabBarBreakingBad color={color} />
+                                <TabBarBreakingBadPress />
                             </View>
                         )
                     }
@@ -100,9 +101,9 @@ const HomeTabs = () => {
                     headerTitle: 'Profile',
                     tabBarIcon: ({ color, focused }) => {
                         if (focused) {
-                            return <İcon name="user-circle" color={color} size={25} />
+                            return <Heisenberg />
                         }
-                        return <İcon name="user-circle" color={color} size={25} />
+                        return <HeisenbergPress />
                     }
                 }}
             />
@@ -138,7 +139,10 @@ const Router = () => {
                             options={{ headerShown: false }}
                         />
                     ) : (
-                        <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
+                        <>
+                            <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
+                            <Stack.Screen name="İmages" component={İmages} options={{ headerShown: false }} />
+                        </>
                     )
                 }
             </Stack.Navigator>
