@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import İcon from 'react-native-vector-icons/FontAwesome5';
 import auth from "@react-native-firebase/auth";
+import { Provider } from 'react-redux';
+import { store } from './context/store';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -129,24 +131,26 @@ const Router = () => {
         })
     }, []);
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                {
-                    !userSession ? (
-                        <Stack.Screen
-                            name="AuthStack"
-                            component={AuthStack}
-                            options={{ headerShown: false }}
-                        />
-                    ) : (
-                        <>
-                            <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
-                            <Stack.Screen name="İmages" component={İmages} options={{ headerShown: false }} />
-                        </>
-                    )
-                }
-            </Stack.Navigator>
-        </NavigationContainer >
+        <Provider store={store}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    {
+                        !userSession ? (
+                            <Stack.Screen
+                                name="AuthStack"
+                                component={AuthStack}
+                                options={{ headerShown: false }}
+                            />
+                        ) : (
+                            <>
+                                <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
+                                <Stack.Screen name="İmages" component={İmages} options={{ headerShown: false }} />
+                            </>
+                        )
+                    }
+                </Stack.Navigator>
+            </NavigationContainer >
+        </Provider>
     )
 }
 export default Router;

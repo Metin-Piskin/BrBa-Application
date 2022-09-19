@@ -1,15 +1,25 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import auth from "@react-native-firebase/auth";
-
+import { useSelector, useDispatch } from "react-redux";
 
 import styles from './Profile.style';
 
 import { Breaking, Bad, Heisenberg } from '../../Component/Svc/İcons';
 
 const ProfilePage = () => {
+    const job = useSelector(s => s.FavouritesList);
 
+    const dispatch = useDispatch();
     //const Exit = () => auth().signOut()
+
+    const RenderJobs = ({ item }) => {
+        return (
+            <View>
+                <Text>{item.name}</Text>
+            </View>
+        )
+    }
 
     return (
         <View style={styles.container}>
@@ -52,6 +62,12 @@ const ProfilePage = () => {
 
             <View style={styles.favoritecontainer}>
                 <Text style={styles.favoritetext}>Favorite Characters</Text>
+            </View>
+            <View>
+                <FlatList
+                    data={job}
+                    renderItem={RenderJobs}
+                />
             </View>
             <View style={styles.favoritecontainer}>
                 <Text style={styles.favoritetext}>Favorite Episodes</Text>

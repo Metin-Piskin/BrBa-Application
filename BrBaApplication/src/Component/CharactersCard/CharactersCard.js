@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import { View, Text, Image, ImageBackground, TouchableOpacity } from "react-native";
-import { Heart, HeartPress } from '../Svc/İcons';
 import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './CharactersCard.style';
+import { Heart, HeartPress } from '../Svc/İcons';
+import { addToBasket, selectBasketItems, removeFromBasket } from '../../context/basketSlice';
 
 const CharactersCard = ({ input }) => {
     const [fav, setFav] = useState(true);
-    const Favpres = () => {
+    const items = useSelector(selectBasketItems);
+    const dispatch = useDispatch();
+
+    const handleFavorite = () => {
         fav === true ? (
-            setFav(false)
+            setFav(false),
+            dispatch(addToBasket({ input }))
         ) : (
-            setFav(true)
+            setFav(true),
+            dispatch(removeFromBasket({ input }))
         )
     }
+
+    console.log(items);
+
     return (
         <ImageBackground style={styles.container} source={{ uri: input.img }}>
-            <TouchableOpacity style={styles.heartcontainer} onPress={Favpres}>
+            <TouchableOpacity style={styles.heartcontainer} onPress={handleFavorite}>
                 {
                     fav ? (
                         <Heart size={25} fill='#fff' />
