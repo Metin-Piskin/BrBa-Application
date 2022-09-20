@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Heart, HeartPress } from '../Svc/İcons';
 import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './QuotesCard.style';
+import { addToQuote, selectQuoteItems, removeFromQuote } from '../../context/quoteSlice';
 
 const QuotesCard = ({ input }) => {
     const [fav, setFav] = useState(true);
+    const items = useSelector(selectQuoteItems);
+    const dispatch = useDispatch();
+
     const Favpres = () => {
         fav === true ? (
-            setFav(false)
+            setFav(false),
+            dispatch(addToQuote({ input }))
         ) : (
-            setFav(true)
+            setFav(true),
+            dispatch(removeFromQuote({ input }))
         )
     }
     return (

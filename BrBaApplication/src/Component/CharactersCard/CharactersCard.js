@@ -22,8 +22,6 @@ const CharactersCard = ({ input }) => {
         )
     }
 
-    console.log(items);
-
     return (
         <ImageBackground style={styles.container} source={{ uri: input.img }}>
             <TouchableOpacity style={styles.heartcontainer} onPress={handleFavorite}>

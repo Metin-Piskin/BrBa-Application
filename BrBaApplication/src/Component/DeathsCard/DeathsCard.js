@@ -2,18 +2,26 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Heart, HeartPress } from '../Svc/İcons';
 import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './DeathsCard.style';
+import { addToDeath, selectDeathItems, removeFromDeath } from '../../context/deathSlice';
 
 const DeathsCard = ({ input }) => {
     const [fav, setFav] = useState(true);
+    const items = useSelector(selectDeathItems);
+    const dispatch = useDispatch();
+
     const Favpres = () => {
         fav === true ? (
-            setFav(false)
+            setFav(false),
+            dispatch(addToDeath({ input }))
         ) : (
-            setFav(true)
+            setFav(true),
+            dispatch(removeFromDeath({ input }))
         )
     }
+    
     return (
         <LinearGradient
             colors={['#000000c0', '#066337', '#000000c0']}

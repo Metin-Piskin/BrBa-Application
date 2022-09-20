@@ -2,18 +2,27 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Heart, HeartPress } from '../Svc/İcons';
 import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './EpisodesCard.style';
+import { addToEpisode, selectEpisodeItems, removeFromEpisode } from '../../context/episodeSlice';
 
 const EpisodesCard = ({ input }) => {
     const [fav, setFav] = useState(true);
+    const items = useSelector(selectEpisodeItems);
+    const dispatch = useDispatch();
+
     const Favpres = () => {
         fav === true ? (
-            setFav(false)
+            setFav(false),
+            dispatch(addToEpisode({ input }))
         ) : (
-            setFav(true)
+            setFav(true),
+            dispatch(removeFromEpisode({ input }))
         )
     }
+
+
     return (
         <LinearGradient
             colors={['#000000c0', '#066337', '#000000c0']}
