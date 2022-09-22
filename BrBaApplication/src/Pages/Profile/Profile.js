@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native';
-import auth from "@react-native-firebase/auth";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from '../../context/basketSlice';
 import { selectEpisodeItems } from '../../context/episodeSlice';
 import { selectQuoteItems } from '../../context/quoteSlice';
 import { selectDeathItems } from '../../context/deathSlice';
+import firestore from '@react-native-firebase/firestore';
+import auth from "@react-native-firebase/auth";
 
 import styles from './Profile.style';
 
@@ -13,16 +14,39 @@ import FavoriteCharacter from '../../Component/FavoriteCardComponents/FavoriteCh
 import FavoriteEpisode from '../../Component/FavoriteCardComponents/FavoriteEpisode';
 import FavoriteQuote from '../../Component/FavoriteCardComponents/FavoriteQuote';
 import FavoriteDeath from '../../Component/FavoriteCardComponents/FavoriteDeath';
+import Loading from '../../Component/Loading';
 
 const ProfilePage = () => {
+    const [CurrentLoggedInUser, setCurrentLoggedInUser] = useState(true)
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const user = auth().currentUser
+        firestore()
+            .collection('users')
+            .where('owner_uid', '==', user.uid)
+            .get()
+            .then(querySnapshot => {
+                //console.log('Total users: ', querySnapshot.size);
+                querySnapshot.forEach(documentSnapshot => {
+                    setCurrentLoggedInUser(documentSnapshot.data());
+                });
+            });
+        if (!!CurrentLoggedInUser) {
+            setLoading(false);
+        }
+    }, [])
+
     const items = useSelector(selectBasketItems);
     const episodes = useSelector(selectEpisodeItems);
     const quotes = useSelector(selectQuoteItems);
     const deaths = useSelector(selectDeathItems);
 
-    //const Exit = () => auth().signOut()
+    const Exit = () => auth().signOut()
 
-    const as = items.length;
+    if (loading) {
+        return <Loading />;
+    };
 
     const RenderJobs = () => {
         return (
@@ -53,38 +77,37 @@ const ProfilePage = () => {
             <ScrollView style={styles.container}>
                 <View style={styles.profileimagecontainer}>
                     <Image
-                        source={{ uri: 'https://avatars.githubusercontent.com/u/85956297?v=4' }}
+                        source={{ uri: CurrentLoggedInUser.profile_picture }}
                         style={styles.profileimage}
                     />
                 </View>
 
                 <View style={styles.informationscontainer}>
                     <Text style={styles.informationstext}>İnformations</Text>
+                    <TouchableOpacity onPress={Exit}>
+                        <Text style={{ color: '#fff' }}>Exit</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.informationsdetailcontainer}>
                     <View>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Name: </Text>
-                            <Text style={styles.informationsdetailtextss}>Metin</Text>
+                            <Text style={styles.informationsdetailtext}>Name: {CurrentLoggedInUser.name}</Text>
                         </View>
+                        <Text style={styles.informationsdetailtext}>Surname: {CurrentLoggedInUser.surname}</Text>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Surname: </Text>
-                            <Text style={styles.informationsdetailtextss}>Pişkin</Text>
+                            <Text style={styles.informationsdetailtext}>Age: {CurrentLoggedInUser.age}</Text>
                         </View>
-                        <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Age: </Text>
-                            <Text style={styles.informationsdetailtextss}>23</Text>
-                        </View>
+                        <Text style={styles.informationsdetailtext}>Email: {CurrentLoggedInUser.email}</Text>
                     </View>
                     <View>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Nickname: </Text>
-                            <Text style={styles.informationsdetailtextss}>Mtn</Text>
+                            <Text style={styles.informationsdetailtext}>Nickname: {CurrentLoggedInUser.nickname}</Text>
+
                         </View>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Location: </Text>
-                            <Text style={styles.informationsdetailtextss}>Türkiye</Text>
+                            <Text style={styles.informationsdetailtext}>Country: {CurrentLoggedInUser.country}</Text>
                         </View>
+                        <Text style={styles.informationsdetailtext}>City: {CurrentLoggedInUser.city}</Text>
                     </View>
                 </View>
 
