@@ -27,6 +27,7 @@ export default StyleSheet.create({
         fontSize: 25
     },
     informationsdetailcontainer: {
+        borderRadius: 30,
         borderWidth: 2,
         borderColor: '#fff',
         marginHorizontal: 10,
@@ -36,22 +37,23 @@ export default StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-evenly"
     },
-    informationsdetailinnercontainer:{
-        flexDirection:"row"
+    informationsdetailinnercontainer: {
+        flexDirection: "row"
     },
     informationsdetailtext: {
         color: '#fff',
         fontWeight: "bold"
     },
     informationsdetailtextss: {
-        color: '#066337',
+        color: '#CEBF73',
+        fontWeight: 'bold'
     },
     favoritecontainer: {
-        alignItems:"center"
+        marginHorizontal:30,
     },
     favoritetext: {
         color: '#fff',
         fontWeight: "bold",
         fontSize: 25
-    }
+    },
 })

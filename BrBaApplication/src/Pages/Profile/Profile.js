@@ -75,39 +75,48 @@ const ProfilePage = () => {
     return (
         <>
             <ScrollView style={styles.container}>
-                <View style={styles.profileimagecontainer}>
-                    <Image
-                        source={{ uri: CurrentLoggedInUser.profile_picture }}
-                        style={styles.profileimage}
-                    />
-                </View>
-
+                {/*
                 <View style={styles.informationscontainer}>
-                    <Text style={styles.informationstext}>İnformations</Text>
-                    <TouchableOpacity onPress={Exit}>
-                        <Text style={{ color: '#fff' }}>Exit</Text>
-                    </TouchableOpacity>
+                <Text style={styles.informationstext}>İnformations</Text>
                 </View>
+            */}
                 <View style={styles.informationsdetailcontainer}>
                     <View>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Name: {CurrentLoggedInUser.name}</Text>
+                            <Text style={styles.informationsdetailtext}>Name: </Text>
+                            <Text style={styles.informationsdetailtextss}>{CurrentLoggedInUser.name}</Text>
                         </View>
-                        <Text style={styles.informationsdetailtext}>Surname: {CurrentLoggedInUser.surname}</Text>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Age: {CurrentLoggedInUser.age}</Text>
+                            <Text style={styles.informationsdetailtext}>Surname: </Text>
+                            <Text style={styles.informationsdetailtextss}>{CurrentLoggedInUser.surname}</Text>
                         </View>
-                        <Text style={styles.informationsdetailtext}>Email: {CurrentLoggedInUser.email}</Text>
-                    </View>
-                    <View>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Nickname: {CurrentLoggedInUser.nickname}</Text>
+                            <Text style={styles.informationsdetailtext}>Nickname: </Text>
+                            <Text style={styles.informationsdetailtextss}>{CurrentLoggedInUser.nickname}</Text>
+                        </View>
+                        <View style={styles.informationsdetailinnercontainer}>
+                            <Text style={styles.informationsdetailtext}>Age: </Text>
+                            <Text style={styles.informationsdetailtextss}>{CurrentLoggedInUser.age}</Text>
+                        </View>
 
+                        <View style={styles.informationsdetailinnercontainer}>
+                            <Text style={styles.informationsdetailtext}>Country: </Text>
+                            <Text style={styles.informationsdetailtextss}>{CurrentLoggedInUser.country}</Text>
                         </View>
                         <View style={styles.informationsdetailinnercontainer}>
-                            <Text style={styles.informationsdetailtext}>Country: {CurrentLoggedInUser.country}</Text>
+                            <Text style={styles.informationsdetailtext}>City: </Text>
+                            <Text style={styles.informationsdetailtextss}>{CurrentLoggedInUser.city}</Text>
                         </View>
-                        <Text style={styles.informationsdetailtext}>City: {CurrentLoggedInUser.city}</Text>
+                        <View style={styles.informationsdetailinnercontainer}>
+                            <Text style={styles.informationsdetailtext}>Email: </Text>
+                            <Text style={styles.informationsdetailtextss}>{CurrentLoggedInUser.email}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.profileimagecontainer}>
+                        <Image
+                            source={{ uri: CurrentLoggedInUser.profile_picture }}
+                            style={styles.profileimage}
+                        />
                     </View>
                 </View>
 

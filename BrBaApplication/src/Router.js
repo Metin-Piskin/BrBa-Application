@@ -7,6 +7,8 @@ import İcon from 'react-native-vector-icons/FontAwesome5';
 import auth from "@react-native-firebase/auth";
 import { Provider } from 'react-redux';
 import { store } from './context/store';
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -94,6 +96,15 @@ const HomeTabs = () => {
                     headerStyle: {
                         backgroundColor: '#066337'
                     },
+                    headerRight: () => (
+                        <Icon
+                            style={{ marginRight: 10 }}
+                            name="logout"
+                            size={30}
+                            color="white"
+                            onPress={() => auth().signOut()}
+                        />
+                    ),
                     headerTitleStyle: {
                         fontSize: 20,
                         fontWeight: "bold",

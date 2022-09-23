@@ -79,9 +79,11 @@ const SignPage = (props) => {
 
     return (
         <ScrollView style={{ backgroundColor: '#18191A', flex: 1 }}>
+            {/*
             <View style={stylis.alltitlecontainer}>
                 <Text style={stylis.alltitle}>Sign</Text>
             </View>
+            */}
             <Image
                 source={require('../../../Assets/BrBa01.png')}
                 style={{ resizeMode: 'contain', width: 380, height: 200, borderRadius: 100, marginLeft: 7, marginVertical: 25 }}
@@ -89,13 +91,22 @@ const SignPage = (props) => {
             <Formik initialValues={initialFormValues} onSubmit={handleFormSubmit} validationSchema={LoginFormSchema}>
                 {({ values, handleChange, handleSubmit, handleBlur, isValid, errors }) => (
                     <>
+                        <View style={{
+                            zIndex: 1,
+                            position: 'absolute',
+                            top: 130,
+                            left: 130
+                        }}>
+                            <Image
+                                source={{ uri: validUrl.isUri(thumbnailurl) ? thumbnailurl : PLACEHOLDER_IMAGE }}
+                                style={{
+                                    width: 120,
+                                    height: 80,
+                                    resizeMode: 'contain'
+                                }}
+                            />
+                        </View>
                         <View>
-                            <View style={{ justifyContent: 'center', alignItems:'center' }}>
-                                <Image
-                                    source={{ uri: validUrl.isUri(thumbnailurl) ? thumbnailurl : PLACEHOLDER_IMAGE }}
-                                    style={{ width: 120, height: 80, resizeMode:'contain' }}
-                                />
-                            </View>
                             <View>
                                 <AuthInput
                                     placeholder="Profil Resmi URL"
